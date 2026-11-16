@@ -4,6 +4,7 @@ import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import { openDb } from '../src/db.js';
 import { createApp } from '../src/app.js';
 
@@ -23,7 +24,7 @@ before(async () => {
   const app = createApp({
     db,
     secret: SECRET,
-    staticDir: new URL('../public/', import.meta.url).pathname,
+    staticDir: fileURLToPath(new URL('../public/', import.meta.url)),
     limits: { global: 100000, auth: 1000, write: 1000, upload: 1000 },
   });
   server = http.createServer(app);
