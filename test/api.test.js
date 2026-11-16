@@ -37,6 +37,12 @@ async function signup(username) {
   return r.body.token;
 }
 
+test('health endpoint is available for deployment checks', async () => {
+  const r = await call('GET', '/health');
+  assert.equal(r.status, 200);
+  assert.deepEqual(r.body, { status: 'ok' });
+});
+
 test('extractTags lowercases, dedupes and ignores text without tags', () => {
   assert.deepEqual(extractTags('Hello #Design and #design plus #dev_life'), ['design', 'dev_life']);
   assert.deepEqual(extractTags('no tags here'), []);
