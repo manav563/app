@@ -14,9 +14,18 @@ Plaza is a small social network that mixes ideas from several apps: Instagram-st
 cp .env.example .env        # set JWT_SECRET (openssl rand -hex 32)
 export $(grep -v '^#' .env | xargs)
 npm start
-npm test                    # 32 API integration tests, in-memory database
+npm test                    # 33 API integration tests, in-memory database
 npm run test:e2e            # 13 browser tests (needs Playwright, see below)
 ```
+
+On Windows PowerShell, run these commands from the project folder:
+
+```powershell
+$env:JWT_SECRET = (node -p "require('node:crypto').randomBytes(32).toString('hex')")
+npm start
+```
+
+Then open `http://localhost:3000` in your browser. Keep the PowerShell window open while using the app.
 
 With Docker:
 
