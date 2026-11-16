@@ -2,6 +2,7 @@ FROM node:22-alpine
 WORKDIR /app
 COPY package.json ./
 COPY src ./src
+COPY public ./public
 ENV NODE_ENV=production PORT=3000 DB_PATH=/data/plaza.db
 RUN mkdir /data && chown node:node /data
 USER node
