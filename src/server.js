@@ -1,5 +1,6 @@
 import http from 'node:http';
 import { randomBytes } from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 import { openDb } from './db.js';
 import { createApp } from './app.js';
 
@@ -22,7 +23,7 @@ const app = createApp({
   secret,
   allowedOrigin: env.ALLOWED_ORIGIN || '',
   trustProxy: env.TRUST_PROXY === '1',
-  staticDir: new URL('../public/', import.meta.url).pathname,
+  staticDir: fileURLToPath(new URL('../public/', import.meta.url)),
   log: (entry) => console.log(JSON.stringify({ t: new Date().toISOString(), ...entry })),
 });
 
