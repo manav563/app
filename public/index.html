@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>Plaza</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <noscript>Plaza needs JavaScript to run.</noscript>
+
+  <div id="auth" class="auth" hidden>
+    <div class="brand"><span class="mark" aria-hidden="true"></span>Plaza</div>
+    <section class="stream">
+      <h1 id="auth-title">Log in</h1>
+      <form id="authform" novalidate>
+        <div class="field-l"><label for="a-user">Username</label><input id="a-user" class="field" autocomplete="username" maxlength="20" required></div>
+        <div class="field-l" id="a-name-wrap" hidden><label for="a-name">Display name</label><input id="a-name" class="field" autocomplete="name" maxlength="40"></div>
+        <div class="field-l"><label for="a-pass">Password</label><input id="a-pass" class="field" type="password" autocomplete="current-password" maxlength="128" required></div>
+        <p id="a-err" class="errmsg" role="alert"></p>
+        <button id="a-submit" class="btn block" type="submit">Log in</button>
+      </form>
+      <button id="a-switch" class="btn ghost block" type="button">Create an account</button>
+    </section>
+  </div>
+
+  <div id="app" class="app" hidden>
+    <aside class="rail">
+      <div class="brand"><span class="mark" aria-hidden="true"></span>Plaza</div>
+      <button id="theme" class="btn ghost sm" type="button"></button>
+      <nav class="nav" aria-label="Main"></nav>
+    </aside>
+
+    <main class="main">
+      <div id="banner" class="banner" hidden></div>
+      <section id="composer" class="stream composer" hidden>
+        <img id="cav" class="av" alt="">
+        <div class="cbody">
+          <label class="sr" for="ctext">Write a post</label>
+          <textarea id="ctext" rows="2" maxlength="280" placeholder="What is happening? Add #tags to be found."></textarea>
+          <div id="cpollbox" hidden>
+            <label class="sr" for="po0">Poll option 1</label><input id="po0" class="popt" maxlength="40" placeholder="Option 1" autocomplete="off">
+            <label class="sr" for="po1">Poll option 2</label><input id="po1" class="popt" maxlength="40" placeholder="Option 2" autocomplete="off">
+            <label class="sr" for="po2">Poll option 3</label><input id="po2" class="popt" maxlength="40" placeholder="Option 3 (optional)" autocomplete="off">
+            <label class="sr" for="po3">Poll option 4</label><input id="po3" class="popt" maxlength="40" placeholder="Option 4 (optional)" autocomplete="off">
+          </div>
+          <div id="cprev"></div>
+          <div class="crow">
+            <button id="cphoto" class="act" type="button" aria-label="Add a photo"></button>
+            <button id="cpoll" class="act" type="button" aria-label="Add a poll" aria-pressed="false"></button>
+            <input type="file" id="cfile" accept="image/*" hidden>
+            <label id="ctargetwrap" class="target" hidden><span>Post to</span><select id="ctarget"></select></label>
+            <span id="ccount" class="meta">280</span>
+            <button id="cpost" class="btn" type="button" disabled>Post</button>
+          </div>
+        </div>
+      </section>
+      <div id="main" class="feed" aria-live="polite"></div>
+    </main>
+
+    <aside id="aside" class="aside" aria-label="Suggestions"></aside>
+  </div>
+
+  <div id="sv" class="sv" role="dialog" aria-modal="true" aria-label="Story" hidden></div>
+  <div id="sc" class="sv scwrap" role="dialog" aria-modal="true" aria-label="New story" hidden></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

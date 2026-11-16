@@ -1,0 +1,16 @@
+{
+  "name": "plaza-api",
+  "version": "1.0.0",
+  "description": "REST API for Plaza, a small social network: accounts, posts, likes, replies, follows and a home feed.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "dev": "node --watch --disable-warning=ExperimentalWarning src/server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test test/*.test.js",
+    "test:e2e": "node --disable-warning=ExperimentalWarning --test --test-concurrency=1 e2e/*.test.js"
+  }
+}
