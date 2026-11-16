@@ -38,6 +38,9 @@ export function createApp({ db, secret, allowedOrigin = '', trustProxy = false, 
     routes.push({ method, re, keys, handler, bucket: opts.bucket, bodyLimit: opts.bodyLimit });
   };
 
+  // Lightweight endpoint used by container health checks and deployment monitors.
+  route('GET', '/health', () => ({ body: { status: 'ok' } }));
+
   const tx = (fn) => {
     db.exec('BEGIN');
     try {
